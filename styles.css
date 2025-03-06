@@ -27,12 +27,6 @@ body, html {
 
 .bubble {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 230px;
-    height: 230px;
-    margin-top: -110px; /* Centering vertically */
-    margin-left: -110px; /* Centering horizontally */
     background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 70%);
     border-radius: 50%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -54,6 +48,14 @@ body, html {
         height: 290px;
         top: calc(50% - 38px);
         left: calc(50% - 30px);
+    }
+}
+@media (max-width: 1920px) {
+    .bubble {
+        width: 215px;
+        height: 215px;
+        top: calc(50% - 110px);
+        left: calc(50% - 105px);
     }
 }
 @media (max-width: 1440px) {
