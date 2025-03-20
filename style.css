@@ -32,11 +32,20 @@ body, html {
 
 /* Bubble Styling */
 .bubble {
-    width: 500px;
-    height: 500px;
+    width: 25vw;  /* Makes the bubble scale proportionally */
+    height: 25vw;
+    max-width: 500px;
+    max-height: 500px;
+    background-image: url('images/Background-off.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1); /* Transparent by default */
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Hover effect */
