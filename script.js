@@ -1,9 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const bubble = document.querySelector('.bubble');
-    const background = document.querySelector('.background');
-    
-    bubble.addEventListener('click', () => {
-        bubble.classList.toggle('active');
-        background.classList.toggle('on');
-    });
+const bubble = document.querySelector('.bubble');
+const container = document.querySelector('.container');
+
+bubble.addEventListener('click', () => {
+    container.classList.toggle('active');
 });
