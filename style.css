@@ -32,8 +32,8 @@ body, html {
 
 /* Bubble Styling */
 .bubble {
-    width: 25vw;  /* Makes the bubble scale proportionally */
-    height: 25vw;
+    width: 10vw;  /* Makes the bubble scale proportionally */
+    height: 10vw;
     max-width: 500px;
     max-height: 500px;
     background-image: url('images/Background-off.jpg');
