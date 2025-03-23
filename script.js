@@ -1,4 +1,4 @@
-// ✅ script.js with image-based responsive child bubbles
+// ✅ script.js with image-based responsive child bubbles + smooth spread + floating restore
 
 const bubble = document.getElementById('main-bubble');
 const background = document.getElementById('bg');
@@ -17,10 +17,18 @@ bubble.addEventListener('click', () => {
   bubble.classList.toggle('active');
   background.classList.toggle('on');
 
-  // Show/hide and reposition child bubbles
   childBubbles.forEach((b, i) => {
-    b.classList.toggle('active');
-    if (active) positionBubble(b, i, childBubbles.length);
+    if (active) {
+      positionBubble(b, i, childBubbles.length);
+      setTimeout(() => {
+        b.classList.add('active');
+        b.style.animation = `pop 0.5s ease-out ${i * 0.1}s forwards, float 6s ease-in-out infinite`;
+      }, 10);
+    } else {
+      b.classList.remove('active');
+      b.style.animation = 'none';
+      centerBubble(b);
+    }
   });
 });
 
@@ -31,7 +39,18 @@ childBubbles.forEach((bubble) => {
   bubble.addEventListener('mouseleave', () => {
     bubble.src = 'images/childoff.png';
   });
+
+  // Start all bubbles at center
+  centerBubble(bubble);
 });
+
+function centerBubble(bubble) {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+  bubble.style.left = `${centerX}px`;
+  bubble.style.top = `${centerY}px`;
+  bubble.style.transform = 'translate(-50%, -50%) scale(0.3)';
+}
 
 function positionBubble(bubble, index, total) {
   const angle = (index / total) * 2 * Math.PI;
@@ -40,11 +59,9 @@ function positionBubble(bubble, index, total) {
   const centerY = window.innerHeight / 2;
   const x = centerX + radius * Math.cos(angle);
   const y = centerY + radius * Math.sin(angle);
-  const size = bubble.offsetWidth / 2;
   bubble.style.left = `${x}px`;
   bubble.style.top = `${y}px`;
   bubble.style.transform = 'translate(-50%, -50%) scale(1)';
-  
 }
 
 window.addEventListener('resize', () => {
@@ -52,5 +69,7 @@ window.addEventListener('resize', () => {
     childBubbles.forEach((b, i) => {
       positionBubble(b, i, childBubbles.length);
     });
+  } else {
+    childBubbles.forEach(centerBubble);
   }
 });
