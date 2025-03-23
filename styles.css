@@ -44,15 +44,19 @@ html, body {
   width: clamp(60px, 8vw, 100px);
   height: auto;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transform: translate(-50%, -50%) scale(0.3);
+  transition: opacity 0.8s ease, transform 1s ease;
   z-index: 1;
   cursor: pointer;
 }
 
+
 .child-bubble.active {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
   animation: float 6s ease-in-out infinite;
 }
+
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }

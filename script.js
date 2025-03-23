@@ -41,8 +41,10 @@ function positionBubble(bubble, index, total) {
   const x = centerX + radius * Math.cos(angle);
   const y = centerY + radius * Math.sin(angle);
   const size = bubble.offsetWidth / 2;
-  bubble.style.left = `${x - size}px`;
-  bubble.style.top = `${y - size}px`;
+  bubble.style.left = `${x}px`;
+  bubble.style.top = `${y}px`;
+  bubble.style.transform = 'translate(-50%, -50%) scale(1)';
+  
 }
 
 window.addEventListener('resize', () => {
