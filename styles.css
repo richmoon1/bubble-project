@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: black;
+  font-family: sans-serif;
+}
+
+.background {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.8), black);
+  overflow: hidden;
+  transition: background 1s ease;
+}
+
+.background.on {
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.15), black);
+}
+
+.main-ball {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(150px, 15vw, 250px);
+  cursor: pointer;
+  transition: filter 0.5s ease;
+  z-index: 2;
+}
+
+.main-ball.active {
+  filter: drop-shadow(0 0 50px gold);
+}
+
+.child-bubble {
+  position: absolute;
+  width: clamp(60px, 8vw, 100px);
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.child-bubble.active {
+  opacity: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
