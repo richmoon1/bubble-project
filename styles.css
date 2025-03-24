@@ -37,7 +37,7 @@ html, body {
   top: 50%; /* adjust this if needed for alignment */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(120px, 25vw, 300px);
+  width: clamp(100px, 25vw, 300px);
   height: auto;
   max-width: 100%;
   z-index: 2;
@@ -52,7 +52,7 @@ html, body {
 /* Child bubbles */
 .child-bubble {
   position: absolute;
-  width: clamp(60px, 8vw, 100px);
+  width: clamp(40px, 8vw, 120px);
   height: auto;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.3);
@@ -90,18 +90,25 @@ html, body {
   top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
+  width: 30vw; /* your preferred size */
   padding: 20px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+
+  /* Updated glow */
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.15),
+    0 0 60px rgba(255, 255, 255, 0.2),
+    0 0 120px rgba(255, 215, 0, 0.25); /* Optional warm tone */
+
   color: white;
   display: none;
   z-index: 10;
   animation: glowCard 0.4s ease-out;
 }
+
 
 .bubble-card img {
   width: 100%;

@@ -15,8 +15,8 @@ bubble.addEventListener('click', () => {
 
   // Switch scene background
   scene.src = active
-    ? 'images/backeson.jpg'
-    : 'images/backesoff.jpg';
+    ? 'images/backiion.jpg'
+    : 'images/backiioff.jpg';
 
   bubble.classList.toggle('active');
   background.classList.toggle('on');
