@@ -1,7 +1,6 @@
-// ✅ script.js with image-based responsive child bubbles + smooth spread + floating restore
-
 const bubble = document.getElementById('main-bubble');
 const background = document.getElementById('bg');
+const scene = document.getElementById('scene-img');
 const childBubbles = document.querySelectorAll('.child-bubble');
 
 let active = false;
@@ -9,10 +8,15 @@ let active = false;
 bubble.addEventListener('click', () => {
   active = !active;
 
-  // Switch main crystal ball image
+  // Switch main bubble image
   bubble.src = active
     ? 'images/Backgroundon.png'
     : 'images/Backgroundoff.png';
+
+  // Switch scene background
+  scene.src = active
+    ? 'images/backeson.jpg'
+    : 'images/backesoff.jpg';
 
   bubble.classList.toggle('active');
   background.classList.toggle('on');
@@ -20,14 +24,12 @@ bubble.addEventListener('click', () => {
   childBubbles.forEach((b, i) => {
     if (active) {
       positionBubble(b, i, childBubbles.length);
-      setTimeout(() => {
-        b.classList.add('active');
-        b.style.animation = `pop 0.5s ease-out ${i * 0.1}s forwards, float 6s ease-in-out infinite`;
-      }, 10);
+      b.classList.add('active');
+      b.style.animation = `pop 0.5s ease-out ${i * 0.1}s forwards, float 6s ease-in-out infinite`;
     } else {
       b.classList.remove('active');
-      b.style.animation = 'none';
       centerBubble(b);
+      b.style.animation = 'none';
     }
   });
 });
@@ -40,8 +42,7 @@ childBubbles.forEach((bubble) => {
     bubble.src = 'images/childoff.png';
   });
 
-  // Start all bubbles at center
-  centerBubble(bubble);
+  centerBubble(bubble); // start at center
 });
 
 function centerBubble(bubble) {
@@ -61,7 +62,7 @@ function positionBubble(bubble, index, total) {
   const y = centerY + radius * Math.sin(angle);
   bubble.style.left = `${x}px`;
   bubble.style.top = `${y}px`;
-  bubble.style.transform = 'translate(-50%, -50%) scale(1)';
+  // transform is handled by animation
 }
 
 window.addEventListener('resize', () => {
@@ -73,3 +74,18 @@ window.addEventListener('resize', () => {
     childBubbles.forEach(centerBubble);
   }
 });
+
+// ✨ Bubble info card logic
+const infoCard = document.getElementById('info-card');
+
+// Show the info card when first bubble is clicked
+childBubbles[0].addEventListener('click', () => {
+  if (!active) return;
+  infoCard.style.display = 'block';
+});
+
+// Hide the card when the close button is clicked
+function hideCard() {
+  infoCard.style.display = 'none';
+}
+

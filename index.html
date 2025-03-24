@@ -8,14 +8,32 @@
 </head>
 <body>
   <div class="background" id="bg">
-    <img src="images/Backgroundoff.png" alt="Crystal Ball" class="main-ball" id="main-bubble" />
+    <!-- Scene background image -->
+    <img src="images/backesoff.jpg" alt="Scene" class="scene-bg" id="scene-img" />
 
+    <!-- Main interactive bubble -->
+    <img src="images/Backgroundoff.png" alt="Main Bubble" class="main-ball" id="main-bubble" />
+
+    <!-- Floating child bubbles -->
     <img src="images/childoff.png" class="child-bubble" id="bubble1" />
     <img src="images/childoff.png" class="child-bubble" id="bubble2" />
     <img src="images/childoff.png" class="child-bubble" id="bubble3" />
     <img src="images/childoff.png" class="child-bubble" id="bubble4" />
     <img src="images/childoff.png" class="child-bubble" id="bubble5" />
   </div>
+
+<!-- Content card (initially hidden) -->
+<div class="bubble-card" id="info-card">
+  <img src="images/sample.jpg" alt="Info Image" />
+  <div class="card-text">
+    <h3>Bubble Topic</h3>
+    <ul>
+      <li>One key detail here</li>
+      <li>Another useful point</li>
+    </ul>
+  </div>
+  <span class="close-card" onclick="hideCard()">×</span>
+</div>
 
   <script src="script.js"></script>
 </body>
