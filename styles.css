@@ -29,11 +29,14 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(150px, 15vw, 250px);
+  width: clamp(120px, 25vw, 300px); /* Scales based on screen size */
+  height: auto;
+  max-width: 100%; /* Prevents overflow */
+  z-index: 2;
   cursor: pointer;
   transition: filter 0.5s ease;
-  z-index: 2;
 }
+
 
 .main-ball.active {
   filter: drop-shadow(0 0 50px gold);
