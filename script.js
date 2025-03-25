@@ -5,6 +5,12 @@ const childBubbles = document.querySelectorAll('.child-bubble');
 
 let active = false;
 
+bubble.addEventListener('mouseenter', () => {
+  bubble.src = 'images/Backgroundon.png';
+});
+bubble.addEventListener('mouseleave', () => {
+  bubble.src = 'images/Backgroundoff.png';
+});
 bubble.addEventListener('click', () => {
   active = !active;
 
@@ -20,7 +26,6 @@ bubble.addEventListener('click', () => {
 
   bubble.classList.toggle('active');
   background.classList.toggle('on');
-
   childBubbles.forEach((b, i) => {
     if (active) {
       positionBubble(b, i, childBubbles.length);
@@ -75,17 +80,23 @@ window.addEventListener('resize', () => {
   }
 });
 
+
 // ✨ Bubble info card logic
 const infoCard = document.getElementById('info-card');
 
-// Show the info card when first bubble is clicked
+// Show the info card
 childBubbles[0].addEventListener('click', () => {
   if (!active) return;
-  infoCard.style.display = 'block';
+  infoCard.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    infoCard.classList.add('visible');
+  });
 });
 
-// Hide the card when the close button is clicked
+// Hide the card
 function hideCard() {
-  infoCard.style.display = 'none';
+  infoCard.classList.remove('visible');
+  setTimeout(() => {
+    infoCard.classList.add('hidden');
+  }, 300);
 }
-
